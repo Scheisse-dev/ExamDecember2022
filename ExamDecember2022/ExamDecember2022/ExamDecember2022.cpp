@@ -4,7 +4,7 @@
 
 int main()
 {
-	Window win = Window("test", 200, 300); 
+	Window win = Window("Hotel Application", 1080, 600); 
 
 	
 }

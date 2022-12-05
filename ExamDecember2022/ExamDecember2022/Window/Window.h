@@ -9,10 +9,11 @@ class Window
 #pragma region f/p
 private:
 	std::string name = ""; 
-	MSG msg = MSG(); 
+	std::wstring wName = std::wstring(name.begin(), name.end()); 
+	MSG msg = MSG();
 	HWND hwnd = HWND();
-	int width =  1200;
-	int height = 1000;
+	int width =  1280;
+	int height = 1024;
 	bool isOpen = false; 
 #pragma endregion f/p
 #pragma region constructor/destructor 

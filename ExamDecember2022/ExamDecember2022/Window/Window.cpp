@@ -20,6 +20,7 @@ Window::Window(std::string _name, int _width, int _height)
 	RegisterClass(&wc);
 
 	WindowCreation(_name, _instance, hwnd, 1, msg);
+	
 
 }
 #pragma endregion constructor/destructor 
@@ -42,13 +43,13 @@ HWND Window::WindowCreation(std::string _name, HINSTANCE _hinstance, HWND _hwnd,
 	HWND hwnd = CreateWindowEx(
 		0,                             
 		Wname.c_str(),                    
-		L"Learn to Program Windows",    
+		Wname.c_str(),
 		WS_OVERLAPPEDWINDOW,            
 
-		CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT, CW_USEDEFAULT,
+		0, 0, width, height,
 
-		NULL,       
-		NULL,       
+		NULL,       //parent window
+		NULL,       //Menu
 		_hinstance,  
 		NULL        
 	);
@@ -59,6 +60,10 @@ HWND Window::WindowCreation(std::string _name, HINSTANCE _hinstance, HWND _hwnd,
 	}
 
 	ShowWindow(hwnd, CmdShow);
+	WindowMenu::CreateButton("Create new Booking" , hwnd , 50, 50);
+	WindowMenu::CreateButton("View all Bookings", hwnd, 50, 300);
+	WindowMenu::CreateButton("I wanna die !", hwnd, 100, 300);
+	
 
 
 	MSG msg = { };
@@ -78,16 +83,11 @@ LRESULT Window::WindowProc(HWND _hwnd, UINT _uMsg, WPARAM _wParam, LPARAM _lPara
 	{
 	case WM_CREATE:
 	{
-		//TODO menu
-		PAINTSTRUCT ps;
-		HDC hdc = BeginPaint(_hwnd, &ps);
-		FillRect(hdc, &ps.rcPaint, (HBRUSH)(COLOR_WINDOW + 1));
-
-		EndPaint(hwnd, &ps);
-	}
+		CreateMenu();
 		break;
+	}
 	case WM_DESTROY:
-		Close(); 
+		DestroyWindow(hwnd);
 		break;
 	}
 	return DefWindowProc(_hwnd, _uMsg, _wParam, _lParam);

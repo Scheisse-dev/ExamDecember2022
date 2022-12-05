@@ -1,6 +1,10 @@
 #include <iostream>
+#include <Windows.h>
+#include "Window/Window.h"
 
 int main()
 {
-    std::cout << "Hello World!\n";
+	Window win = Window("test", 200, 300); 
+
+	
 }

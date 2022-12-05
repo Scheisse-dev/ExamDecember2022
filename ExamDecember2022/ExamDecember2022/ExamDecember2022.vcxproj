@@ -128,6 +128,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="ExamDecember2022.cpp" />
+    <ClCompile Include="Object\Object.cpp" />
+    <ClCompile Include="Window\WindowMenu\WindowMenu.cpp" />
+    <ClCompile Include="Window\Window.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Object\Object.h" />
+    <ClInclude Include="Window\WindowMenu\WindowMenu.h" />
+    <ClInclude Include="Window\Window.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

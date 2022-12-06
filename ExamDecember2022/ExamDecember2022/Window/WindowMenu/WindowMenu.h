@@ -17,7 +17,9 @@ public:
 #pragma endregion constructor/destructor 
 #pragma region methods
 public:
-	static HWND CreateButton(std::string _name, HWND _parentWindow, int _y, int _x);
+	static HWND CreateCalendar(std::string _name, HWND _parentWindow, int _y, int _x, int _size);
+	static HWND CreateTextBox(std::string _name, HWND _parentWindow, int _y, int _x, int _size);
+	static HWND CreateButton(std::string _name, HWND _parentWindow, int _y, int _x, int _size);
 #pragma endregion methods
 #pragma region override
 

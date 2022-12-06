@@ -1,7 +1,10 @@
-#include "Window.h"
-#include "WindowMenu/WindowMenu.h"
+#include "StartWindow.h"
 
-Window::Window(std::string _name, int _width, int _height)
+
+
+
+#pragma region constructor/destructor 
+StartWindow::StartWindow(std::string _name, int _width, int _height)
 {
 	name = _name;
 	width = _width;
@@ -12,27 +15,32 @@ Window::Window(std::string _name, int _width, int _height)
 	std::wstring wstr = std::wstring(name.begin(), name.end());
 	WNDCLASS wc = {};
 	wc.hInstance = _instance,
-	wc.lpfnWndProc = WindowProc_Internal;
+		wc.lpfnWndProc = WindowProc_Internal;
 	wc.hCursor = LoadCursor(NULL, IDC_HAND);
 	wc.lpszClassName = wstr.c_str();
 
 	RegisterClass(&wc);
 
 	WindowCreation(_name, _instance, hwnd, 1, msg);
+
+
+
 }
+#pragma endregion constructor/destructor 
+#pragma region methods
 
-
-void Window::Close()
+void StartWindow::Close()
 {
 	isOpen = false;
 }
 
-void Window::Open()
+void StartWindow::Open()
 {
 
 	isOpen = true;
 }
-HWND Window::WindowCreation(std::string _name, HINSTANCE _hinstance, HWND _hwnd, int CmdShow, MSG _uMsg)
+
+HWND StartWindow::WindowCreation(std::string _name, HINSTANCE _hinstance, HWND _hwnd, int CmdShow, MSG _uMsg)
 {
 	std::wstring Wname = std::wstring(name.begin(), name.end());
 	HWND hwnd = CreateWindowEx(
@@ -57,7 +65,12 @@ HWND Window::WindowCreation(std::string _name, HINSTANCE _hinstance, HWND _hwnd,
 
 
 	ShowWindow(hwnd, CmdShow);
+	HDC hdc;
+	PAINTSTRUCT ps;
 
+	hdc = BeginPaint(hwnd, &ps);
+
+	TextOut(hdc, 500, 0, L"Hotel Objectif3D", ARRAYSIZE(L"Hotel Objectif3D"));
 	WindowMenu::CreateButton("Create new Booking", hwnd, 50, 50, 200);
 	WindowMenu::CreateButton("View all Bookings", hwnd, 50, 300, 200);
 
@@ -71,7 +84,7 @@ HWND Window::WindowCreation(std::string _name, HINSTANCE _hinstance, HWND _hwnd,
 	return 0;
 }
 
-LRESULT Window::WindowProc(HWND _hwnd, UINT _uMsg, WPARAM _wParam, LPARAM _lParam)
+LRESULT StartWindow::WindowProc(HWND _hwnd, UINT _uMsg, WPARAM _wParam, LPARAM _lParam)
 {
 	if (_hwnd == nullptr) return -1;
 	switch (_uMsg)
@@ -87,7 +100,13 @@ LRESULT Window::WindowProc(HWND _hwnd, UINT _uMsg, WPARAM _wParam, LPARAM _lPara
 	}
 	return DefWindowProc(_hwnd, _uMsg, _wParam, _lParam);
 }
-LRESULT Window::WindowProc_Internal(HWND _hwnd, UINT _uMsg, WPARAM _wParam, LPARAM _lParam)
+
+
+LRESULT StartWindow::WindowProc_Internal(HWND _hwnd, UINT _uMsg, WPARAM _wParam, LPARAM _lParam)
 {
 	return DefWindowProc(_hwnd, _uMsg, _wParam, _lParam);
 }
+
+
+
+#pragma endregion methods

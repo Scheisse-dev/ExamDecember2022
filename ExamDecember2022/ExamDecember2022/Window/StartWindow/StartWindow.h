@@ -27,8 +27,6 @@ class WindowMenu;
 		void Close() override;
 		void Open() override;
 		HWND WindowCreation(std::string _name, HINSTANCE _hinstance, HWND _hwnd, int CmdShow, MSG _uMsg) override;
-		LRESULT WindowProc(HWND _hwnd, UINT _uMsg, WPARAM _wParam, LPARAM _lParam) override;
-		static LRESULT CALLBACK WindowProc_Internal(HWND _hwnd, UINT _uMsg, WPARAM _wParam, LPARAM _lParam);
 
 #pragma endregion methods
 

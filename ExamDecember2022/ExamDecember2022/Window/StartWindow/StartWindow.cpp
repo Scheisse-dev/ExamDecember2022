@@ -84,29 +84,6 @@ HWND StartWindow::WindowCreation(std::string _name, HINSTANCE _hinstance, HWND _
 	return 0;
 }
 
-LRESULT StartWindow::WindowProc(HWND _hwnd, UINT _uMsg, WPARAM _wParam, LPARAM _lParam)
-{
-	if (_hwnd == nullptr) return -1;
-	switch (_uMsg)
-	{
-	case WM_CREATE:
-	{
-		CreateMenu();
-		break;
-	}
-	case WM_DESTROY:
-		DestroyWindow(hwnd);
-		break;
-	}
-	return DefWindowProc(_hwnd, _uMsg, _wParam, _lParam);
-}
-
-
-LRESULT StartWindow::WindowProc_Internal(HWND _hwnd, UINT _uMsg, WPARAM _wParam, LPARAM _lParam)
-{
-	return DefWindowProc(_hwnd, _uMsg, _wParam, _lParam);
-}
-
 
 
 #pragma endregion methods

@@ -36,6 +36,9 @@
     <ClCompile Include="Window\DisplayWindow\DisplayWindow.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Reservation\Reservation.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Object\Object.h">
@@ -54,6 +57,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Window\DisplayWindow\DisplayWindow.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Reservation\Reservation.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -7,6 +7,6 @@
 int main()
 {
 	//StartWindow SWin = StartWindow("Hotel Application", 1080, 600);
-	RegisterWindow windo = RegisterWindow("Hotel Application", 1080, 600);
+	RegisterWindow windo = RegisterWindow("Hotel Application", 1080, 700);
 	
 }

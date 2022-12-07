@@ -10,6 +10,7 @@ private:
 	HWND hwnd = HWND();
 	HMENU menu = HMENU();
 	std::string name = "";
+
 #pragma endregion f/p
 #pragma region constructor/destructor 
 public:

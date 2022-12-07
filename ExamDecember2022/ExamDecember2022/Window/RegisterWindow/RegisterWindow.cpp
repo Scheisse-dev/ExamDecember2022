@@ -1,4 +1,5 @@
 #include "RegisterWindow.h"
+#include <iostream>
 
 #pragma region constructor/destructor 
 RegisterWindow::RegisterWindow(std::string _name, int _width, int _height)
@@ -69,8 +70,14 @@ HWND RegisterWindow::WindowCreation(std::string _name, HINSTANCE _hinstance, HWN
 	hdc = BeginPaint(hwnd, &ps);
 
 	TextOut(hdc, 500, 0, L"Create New Booking", ARRAYSIZE(L"Create New Booking"));
-	WindowMenu::CreateCalendar("PUTAIN", hwnd, 300, 10, 100);
-	WindowMenu::CreateTextBox("PUTAIN", hwnd, 50, 50, 100); 
+
+	TextOut(hdc, 0, 100, L"Enter first name:", ARRAYSIZE(L"Enter first name:"));
+	WindowMenu::CreateTextBox("", hwnd, 100, 150, 200);
+	TextOut(hdc, 0, 150, L"Enter last name:", ARRAYSIZE(L"Enter last name:"));
+	WindowMenu::CreateTextBox("", hwnd, 150, 150, 200);
+	TextOut(hdc, 0, 200, L"For how many people: ", ARRAYSIZE(L"For how many people: "));
+	WindowMenu::CreateTextBox("", hwnd, 200, 200, 100);
+	WindowMenu::CreateCalendar("Calendar", hwnd, 300, 10, 100);
 	WindowMenu::CreateButton("Return", hwnd, 0, 0, 70);
 	WindowMenu::CreateButton("Save Bookings", hwnd, 500, 30, 120);
 
@@ -84,25 +91,4 @@ HWND RegisterWindow::WindowCreation(std::string _name, HINSTANCE _hinstance, HWN
 
 	return 0;
 }
-
-LRESULT RegisterWindow::WindowProc(HWND _hwnd, UINT _uMsg, WPARAM _wParam, LPARAM _lParam)
-{
-	if (_hwnd == nullptr) return -1;
-	switch (_uMsg)
-	{
-	case WM_DESTROY:
-		DestroyWindow(hwnd);
-		break;
-	}
-	return DefWindowProc(_hwnd, _uMsg, _wParam, _lParam);
-}
-
-
-LRESULT RegisterWindow::WindowProc_Internal(HWND _hwnd, UINT _uMsg, WPARAM _wParam, LPARAM _lParam)
-{
-	return DefWindowProc(_hwnd, _uMsg, _wParam, _lParam);
-}
-
-
-
 #pragma endregion methods

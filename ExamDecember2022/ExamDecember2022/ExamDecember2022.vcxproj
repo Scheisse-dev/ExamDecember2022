@@ -131,6 +131,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Reservation\Reservation.cpp" />
     <ClCompile Include="Window\DisplayWindow\DisplayWindow.cpp" />
     <ClCompile Include="ExamDecember2022.cpp" />
     <ClCompile Include="Object\Object.cpp" />
@@ -140,6 +141,7 @@
     <ClCompile Include="Window\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Reservation\Reservation.h" />
     <ClInclude Include="Window\DisplayWindow\DisplayWindow.h" />
     <ClInclude Include="Object\Object.h" />
     <ClInclude Include="Window\RegisterWindow\RegisterWindow.h" />

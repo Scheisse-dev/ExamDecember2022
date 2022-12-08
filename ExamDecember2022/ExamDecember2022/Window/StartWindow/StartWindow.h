@@ -24,8 +24,7 @@ class WindowMenu;
 #pragma endregion constructor/destructor 
 #pragma region methods
 	public:
-		void Close() override;
-		void Open() override;
+		
 		HWND WindowCreation(std::string _name, HINSTANCE _hinstance, HWND _hwnd, int CmdShow, MSG _uMsg) override;
 
 #pragma endregion methods

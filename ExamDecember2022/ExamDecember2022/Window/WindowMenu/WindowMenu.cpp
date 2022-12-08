@@ -66,7 +66,8 @@ HWND WindowMenu::CreateTextBox(std::string _name, HWND _parentWindow, int _y, in
     return txt;
 }
 
-HWND WindowMenu::CreateButton(std::string _name, HWND _parentWindow, int _y, int _x, int _size)
+
+HWND WindowMenu::CreateButton(std::string _name, HWND _parentWindow, int _y, int _x, int _size, int _id)
 {
 
     std::wstring wName = std::wstring(_name.begin(), _name.end());
@@ -84,9 +85,9 @@ HWND WindowMenu::CreateButton(std::string _name, HWND _parentWindow, int _y, int
         (HINSTANCE)GetWindowLongPtr(_parentWindow, GWLP_HINSTANCE),
         NULL);
 
-    SendMessage(button, 
-    return button;
-
+    SetWindowLongPtr(button, GWLP_ID, _id);
+        return button;
+        
 }
 
 

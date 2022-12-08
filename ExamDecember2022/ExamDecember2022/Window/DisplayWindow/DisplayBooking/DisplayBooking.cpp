@@ -1,8 +1,6 @@
-#include "DisplayWindow.h"
+#include "DisplayBooking.h"
 
-
-#pragma region constructor
-DisplayWindow::DisplayWindow(std::string _name, int _width, int _height)
+DisplayBooking::DisplayBooking(std::string _name, int _width, int _height)
 {
 	name = _name;
 	width = _width;
@@ -21,8 +19,11 @@ DisplayWindow::DisplayWindow(std::string _name, int _width, int _height)
 
 
 	WindowCreation(_name, _instance, hwnd, 1, msg);
+
+
 }
-HWND DisplayWindow::WindowCreation(std::string _name, HINSTANCE _hinstance, HWND _hwnd, int CmdShow, MSG _uMsg)
+
+HWND DisplayBooking::WindowCreation(std::string _name, HINSTANCE _hinstance, HWND _hwnd, int CmdShow, MSG _uMsg)
 {
 	std::wstring Wname = std::wstring(name.begin(), name.end());
 	HWND hwnd = CreateWindowEx(
@@ -52,10 +53,13 @@ HWND DisplayWindow::WindowCreation(std::string _name, HINSTANCE _hinstance, HWND
 
 	hdc = BeginPaint(hwnd, &ps);
 
+	TextOut(hdc, 500, 0, L"Name", ARRAYSIZE(L"Name"));
 
-	TextOut(hdc, 500, 0, L"Booking View", ARRAYSIZE(L"Booking View"));
-	WindowMenu::CreateButton("Return", hwnd, 0, 0, 70, 3);
-
+	TextOut(hdc, 0, 100, L"First name:", ARRAYSIZE(L"First name:"));
+	TextOut(hdc, 0, 150, L"Last name:", ARRAYSIZE(L"Last name:"));
+	TextOut(hdc, 0, 200, L"People: ", ARRAYSIZE(L"People: "));
+	WindowMenu::CreateCalendar("Calendar", hwnd, 300, 10, 100);
+	WindowMenu::CreateButton("Delete", hwnd, 500, 30, 120, 4);
 
 
 	MSG msg = { };
@@ -67,4 +71,3 @@ HWND DisplayWindow::WindowCreation(std::string _name, HINSTANCE _hinstance, HWND
 
 	return 0;
 }
-#pragma endregion constructor

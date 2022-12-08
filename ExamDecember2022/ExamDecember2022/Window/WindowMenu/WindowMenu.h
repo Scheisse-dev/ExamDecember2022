@@ -1,6 +1,7 @@
 #pragma once
 #include "../../Object/Object.h"
 #include <Windows.h>
+#include <vector>
 
 
 class WindowMenu : public Object
@@ -20,7 +21,7 @@ public:
 public:
 	static HWND CreateCalendar(std::string _name, HWND _parentWindow, int _y, int _x, int _size);
 	static HWND CreateTextBox(std::string _name, HWND _parentWindow, int _y, int _x, int _size);
-	static HWND CreateButton(std::string _name, HWND _parentWindow, int _y, int _x, int _size);
+	static HWND CreateButton(std::string _name, HWND _parentWindow, int _y, int _x, int _size, int _id);
 #pragma endregion methods
 #pragma region override
 

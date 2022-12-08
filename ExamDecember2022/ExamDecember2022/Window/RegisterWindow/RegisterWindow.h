@@ -14,17 +14,15 @@ private:
 	HWND hwnd = HWND();
 	int width = 0;
 	int height = 0;
-	bool isOpen = false;
+	bool save = false;
 #pragma endregion f/p
 #pragma region constructor/destructor 
 public:
 	RegisterWindow() = default;
-	RegisterWindow(std::string _name, int _width, int height);
+	RegisterWindow(std::string _name, int _width, int _height, bool save);
 #pragma endregion constructor/destructor 
 #pragma region methods
 public:
-	void Close() override;
-	void Open() override;
 	HWND WindowCreation(std::string _name, HINSTANCE _hinstance, HWND _hwnd, int CmdShow, MSG _uMsg) override;
 };
 

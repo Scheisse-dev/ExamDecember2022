@@ -2,11 +2,12 @@
 #include <iostream>
 
 #pragma region constructor/destructor 
-RegisterWindow::RegisterWindow(std::string _name, int _width, int _height)
+RegisterWindow::RegisterWindow(std::string _name, int _width, int _height, bool _save)
 {
 	name = _name;
 	width = _width;
 	height = _height;
+	save = _save;
 
 	HINSTANCE _instance = HINSTANCE();
 
@@ -28,16 +29,7 @@ RegisterWindow::RegisterWindow(std::string _name, int _width, int _height)
 #pragma endregion constructor/destructor 
 #pragma region methods
 
-void RegisterWindow::Close()
-{
-	//TODO
-}
 
-void RegisterWindow::Open()
-{
-
-	//TODO
-}
 
 HWND RegisterWindow::WindowCreation(std::string _name, HINSTANCE _hinstance, HWND _hwnd, int CmdShow, MSG _uMsg)
 {
@@ -78,9 +70,13 @@ HWND RegisterWindow::WindowCreation(std::string _name, HINSTANCE _hinstance, HWN
 	TextOut(hdc, 0, 200, L"For how many people: ", ARRAYSIZE(L"For how many people: "));
 	WindowMenu::CreateTextBox("", hwnd, 200, 200, 100);
 	WindowMenu::CreateCalendar("Calendar", hwnd, 300, 10, 100);
-	WindowMenu::CreateButton("Return", hwnd, 0, 0, 70);
-	WindowMenu::CreateButton("Save Bookings", hwnd, 500, 30, 120);
+	WindowMenu::CreateButton("Return", hwnd, 0, 0, 70,3);
+	WindowMenu::CreateButton("Save Bookings", hwnd, 500, 30, 120,4);
 
+	if (save == true)
+	{
+		TextOut(hdc, 500, 30, L"Successful booking", ARRAYSIZE(L"Successful booking"));
+	}
 
 	MSG msg = { };
 	while (GetMessage(&msg, NULL, 0, 0) > 0)

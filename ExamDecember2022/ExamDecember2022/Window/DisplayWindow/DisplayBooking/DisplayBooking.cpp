@@ -17,7 +17,7 @@ DisplayBooking::DisplayBooking(std::string _name, int _width, int _height)
 
 	RegisterClass(&wc);
 
-
+	
 	WindowCreation(_name, _instance, hwnd, 1, msg);
 
 
@@ -55,6 +55,8 @@ HWND DisplayBooking::WindowCreation(std::string _name, HINSTANCE _hinstance, HWN
 
 	TextOut(hdc, 500, 0, L"Name", ARRAYSIZE(L"Name"));
 
+
+	WindowMenu::CreateButton("Return", hwnd, 0, 0, 70, 3);
 	TextOut(hdc, 0, 100, L"First name:", ARRAYSIZE(L"First name:"));
 	TextOut(hdc, 0, 150, L"Last name:", ARRAYSIZE(L"Last name:"));
 	TextOut(hdc, 0, 200, L"People: ", ARRAYSIZE(L"People: "));

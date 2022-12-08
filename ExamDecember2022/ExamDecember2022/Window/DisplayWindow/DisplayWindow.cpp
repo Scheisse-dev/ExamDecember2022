@@ -52,7 +52,6 @@ HWND DisplayWindow::WindowCreation(std::string _name, HINSTANCE _hinstance, HWND
 
 	hdc = BeginPaint(hwnd, &ps);
 
-
 	TextOut(hdc, 500, 0, L"Booking View", ARRAYSIZE(L"Booking View"));
 	WindowMenu::CreateButton("Return", hwnd, 0, 0, 70, 3);
 

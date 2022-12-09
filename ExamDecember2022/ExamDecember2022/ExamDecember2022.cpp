@@ -3,11 +3,16 @@
 #include "Window/Window.h"
 #include "Window/StartWindow/StartWindow.h"
 #include "Window/RegisterWindow/RegisterWindow.h"
-#include <stdio.h>
+#include <windows.h>
+#include <shellapi.h>
 
 int main()
 {
 	//StartWindow SWin = StartWindow("Hotel Application", 1080, 600);
 	StartWindow windo = StartWindow("Hotel Application", 1080, 700);
+
+
+
+		
 	
 }

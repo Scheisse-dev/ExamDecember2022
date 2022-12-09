@@ -15,7 +15,7 @@ RegisterWindow::RegisterWindow(std::string _name, int _width, int _height, bool 
 	WNDCLASS wc = {};
 	wc.hInstance = _instance,
 		wc.lpfnWndProc = WindowProc_Internal;
-	wc.hCursor = LoadCursor(NULL, IDC_HAND);
+	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
 	wc.lpszClassName = wstr.c_str();
 
 	RegisterClass(&wc);

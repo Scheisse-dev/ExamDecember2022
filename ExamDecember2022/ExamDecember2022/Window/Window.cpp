@@ -4,7 +4,11 @@
 #include "RegisterWindow/RegisterWindow.h"
 #include "DisplayWindow/DisplayWindow.h"
 #include "DisplayWindow/DisplayBooking/DisplayBooking.h"
+#include "../Reservation/Reservation.h"
 #include <iostream>
+
+
+
 
 Window::Window(std::string _name, int _width, int _height)
 {
@@ -18,12 +22,14 @@ Window::Window(std::string _name, int _width, int _height)
 	WNDCLASS wc = {};
 	wc.hInstance = _instance,
 	wc.lpfnWndProc = WindowProc_Internal;
-	wc.hCursor = LoadCursor(NULL, IDC_HAND);
+	wc.hCursor = LoadCursor(NULL, IDC_ARROW);
 	wc.lpszClassName = wstr.c_str();
 
 	RegisterClass(&wc);
 
 	WindowCreation(_name, _instance, hwnd, 1, msg);
+
+
 }
 
 
@@ -72,8 +78,7 @@ LRESULT Window::WindowProc_Internal(HWND _hwnd, UINT _uMsg, WPARAM _wParam, LPAR
 		}
 		if (_wParam == 4)
 		{
-			DestroyWindow(_hwnd);
-			DisplayBooking Db = DisplayBooking("Hotel Application", 1080, 700);
+			Reservation::ReservationRegister();
 		}
 		if(_wParam > 4)
 			for (int i = 0; i < 99; i++)

@@ -16,6 +16,10 @@ BookingMenu::BookingMenu(Window* _owner) : super(_owner, BOOKINGMENU)
 
 #pragma endregion constructor
 #pragma region methods
+void BookingMenu::ReturnMainMenu()
+{
+	owner->SetCurrentMenu(MAINMENU);
+}
 void BookingMenu::SaveBooking()
 {
 	try
@@ -45,6 +49,9 @@ void BookingMenu::Initialize()
 
 	ButtonControl* _saveControl = CreateButton(Rect(60, 360, 150, 20), L"Save Booking");
 	_saveControl->OnClick.SetDynamic(this, &BookingMenu::SaveBooking);
+
+	ButtonControl* _returnControl = CreateButton(Rect(10, 0, 100, 20), L"Return");
+	_returnControl->OnClick.SetDynamic(this, &BookingMenu::ReturnMainMenu);
 
 	calendar = CreateCalendar(Rect(10, 140, 150, 150)); 
 	calendar->SetMaxSelected(15);

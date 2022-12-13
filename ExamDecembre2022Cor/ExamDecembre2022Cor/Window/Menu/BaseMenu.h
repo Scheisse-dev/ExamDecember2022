@@ -7,6 +7,7 @@
 
 class WindowControl;
 class Window;
+class Booking;
 
 class BaseMenu : public Object
 {
@@ -18,6 +19,7 @@ protected:
 	bool isInitialized = false;
 	Window* owner = nullptr; 
 	std::vector<WindowControl*> controls = std::vector<WindowControl*>();
+	LabelControl* titleControl; 
 #pragma endregion f/p
 #pragma region constructor
 public:
@@ -37,6 +39,7 @@ protected:
 	LabelControl* CreateLabel(const Rect& _rect, const wchar_t* _text);
 	TextFieldControl* CreateTextField(const Rect& _rect, const wchar_t* _defaultText);
 	class CalendarControl* CreateCalendar(const Rect& _rect);
+	class ButtonBookingControl* CreateBookingButton(const Rect& _rect, const wchar_t* _text, Booking* _booking);
 #pragma endregion methods
 
 };

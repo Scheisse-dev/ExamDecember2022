@@ -22,6 +22,9 @@ public:
 	BookingViewMenu(const BookingViewMenu& _copy) = default; 
 #pragma endregion constructor
 #pragma region methods
+private: 
+	void ReturnMainMenu(); 
+	void LoadBookingData();
 public: 
 	void SetCurrentBooking(Booking* _booking); 
 	void DisplayBookings(const std::vector<Booking*>& _bookings);

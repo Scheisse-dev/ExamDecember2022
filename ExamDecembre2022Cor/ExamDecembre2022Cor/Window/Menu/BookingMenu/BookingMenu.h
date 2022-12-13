@@ -23,6 +23,7 @@ public:
 	BookingMenu(const BookingMenu& _copy) = default; 
 #pragma endregion constructor
 #pragma region methods
+	void ReturnMainMenu(); 
 	void SaveBooking();
 #pragma endregion methods
 #pragma region override

@@ -30,10 +30,14 @@ DateTime CalendarControl::DepartureDate() const
 {
 	return departureDate;
 }
+void CalendarControl::SetInteract(bool _bool)
+{
+	EnableWindow(instance, false);
+}
 void CalendarControl::OnChoice(LPNMSELCHANGE _value)
 {
-	DateTime arriveDate = DateTime(_value->stSelStart);
-	DateTime departureDate = DateTime(_value->stSelEnd);
+	arrivedDate = DateTime(_value->stSelStart);
+	departureDate = DateTime(_value->stSelEnd);
 }
 #pragma endregion methods
 

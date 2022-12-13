@@ -5,6 +5,9 @@
 #include "../../../Booking/Booking.h"
 #include "../../Control/Label/LabelControl.h"
 #include "../../Control/Button/ButtonControl.h"
+#include "../BookingViewDataMenu/BookingViewDataMenu.h"
+#include "../../Window.h"
+#include "../../Control/Button/Booking/ButtonBookingControl.h"
 
 #pragma region f/p
 Booking* BookingViewMenu::CurrentBooking = nullptr; 
@@ -14,6 +17,15 @@ BookingViewMenu::BookingViewMenu(Window* _owner) : super(_owner, BOOKINGVIEWMENU
 {}
 #pragma endregion constructor
 #pragma region methods
+void BookingViewMenu::ReturnMainMenu()
+{
+	owner->SetCurrentMenu(MAINMENU);
+}
+void BookingViewMenu::LoadBookingData()
+{
+	owner->SetCurrentMenu(BOOKINGVIEWDATA);
+		
+}
 void BookingViewMenu::SetCurrentBooking(Booking* _booking)
 {
 	CurrentBooking = _booking;
@@ -28,8 +40,13 @@ void BookingViewMenu::DisplayBookings(const std::vector<Booking*>& _bookings)
 		Client _client = _booking->GetClient(); 
 		const std::string _clientFullName = _client.FirstName() + " " + _client.LastName(); 
 		const std::wstring _fullNameWstr = std::wstring(_clientFullName.begin(), _clientFullName.end());
-		ButtonControl* _button = CreateButton(Rect(_positionX, _positionY, 250, 20), _fullNameWstr.c_str());
-		_positionX += 260;
+		const int _width = _clientFullName.length() * 10;
+		ButtonBookingControl* _button = CreateBookingButton(Rect(_positionX, _positionY, _width, 20), _fullNameWstr.c_str(), _booking);
+		_button->OnClickBooking.SetDynamic(this, &BookingViewMenu::SetCurrentBooking);
+		_button->OnClick.SetDynamic(this, &BookingViewMenu::LoadBookingData);
+
+
+		_positionX += _width + 10;
 		_index++;
 		if (_index % MAXCOLUMNNUMBER == 0)
 		{
@@ -45,6 +62,8 @@ void BookingViewMenu::Initialize()
 {
 	super::Initialize();
 	textControl = CreateLabel(Rect(10, 20, 250, 20), L"");
+	ButtonControl* _returnControl = CreateButton(Rect(10, 0, 100, 20), TEXT("Return"));
+	_returnControl->OnClick.SetDynamic(this, &BookingViewMenu::ReturnMainMenu);
 	isInitialized = true;
 	Close();
 }
@@ -67,12 +86,12 @@ void BookingViewMenu::Open()
 void BookingViewMenu::Close()
 {
 	const size_t _size = controls.size(); 
-	for (size_t i = 0; i < _size; i++)
+	for (size_t i = 3; i < _size; i++)
 	{
-		controls[1]->Hide(); 
-		delete controls[1];
-		controls.erase(controls.begin() + 1);
-
+		controls[3]->Hide(); 
+		delete controls[3];
+		controls.erase(controls.begin() + 3);
 	}
+	super::Close();
 }
 #pragma endregion override

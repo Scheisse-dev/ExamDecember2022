@@ -11,6 +11,10 @@ ButtonControl::ButtonControl(const ButtonControl& _copy) : super(_copy)
 {
 	text = _copy.text; 
 }
+void ButtonControl::OnUse()
+{
+	OnClick.Invoke();
+}
 HWND ButtonControl::Create()
 {
 	instance = CreateWindow(TEXT("BUTTON"), text, WS_TABSTOP | WS_VISIBLE | WS_CHILD | BS_DEFPUSHBUTTON, 

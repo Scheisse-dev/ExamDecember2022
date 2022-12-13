@@ -1,7 +1,10 @@
 #include "BaseMenu.h"
 #include "../Control/WindowControl.h"
 #include "../Control/Calendar/CalendarControl.h"
+#include "../../Booking/Booking.h"
+#include "../Menu/BaseMenu.h"
 #include "../Window.h"
+#include "../Control/Button/Booking/ButtonBookingControl.h"
 
 #pragma region constructor
 BaseMenu::BaseMenu(Window* _owner, const char* _name) : super()
@@ -39,7 +42,7 @@ void BaseMenu::Initialize()
 	std::string _str = name; 
 	const int _width = (owner->Width() / 2) - (std::pow(_str.length() / 2, 2)); 
 	const std::wstring _wName(_str.begin(), _str.end());
-	CreateLabel(Rect(_width, 0, 255, 20), _wName.c_str()); 
+	titleControl = CreateLabel(Rect(_width, 0, 255, 20), _wName.c_str()); 
 }
 std::string BaseMenu::Name()
 {
@@ -72,5 +75,12 @@ CalendarControl* BaseMenu::CreateCalendar(const Rect& _rect)
 	_calendar->Create(); 
 	controls.push_back(_calendar);
 	return _calendar;
+}
+ButtonBookingControl* BaseMenu::CreateBookingButton(const Rect& _rect, const wchar_t* _text, Booking* _booking)
+{
+	ButtonBookingControl* _button = new ButtonBookingControl(currentControlID++, owner->WindowInstance(), _rect, _text, _booking);
+	_button->Create();
+	controls.push_back(_button);
+	return _button;
 }
 #pragma endregion methods

@@ -1,6 +1,7 @@
 #include "Window.h"
 #include "Menu/BaseMenu.h"
 #include "Control/TextField/TextFieldControl.h"
+#include "Control/Calendar/CalendarControl.h"
 #include <format>
 #include <ranges>
 
@@ -69,7 +70,7 @@ LRESULT _stdcall Window::WindowProc(HWND _hwindow, UINT _msg, WPARAM _wp, LPARAM
 	{
 		if (ButtonControl::buttons.contains(_wp))
 		{
-			ButtonControl::buttons[_wp]->OnClick.Invoke();
+			ButtonControl::buttons[_wp]->OnUse();
 			break;
 
 		}
@@ -84,6 +85,27 @@ LRESULT _stdcall Window::WindowProc(HWND _hwindow, UINT _msg, WPARAM _wp, LPARAM
 				if (_pair.first == LOWORD(_wp))
 				{
 					_pair.second->OnValueChange();
+					break;
+				}
+			}
+			break;
+		}
+		}
+		break;
+	}
+	case WM_NOTIFY :
+	{
+		LPNMHDR _lpm = (LPNMHDR)_lp;
+		switch (_lpm->code)
+		{
+		case MCN_SELECT: 
+		{
+			std::map<int, CalendarControl*> _calendars = CalendarControl::calendars;
+			for (std::pair<int, CalendarControl*> _pair : _calendars)
+			{
+				if (_pair.first == _wp)
+				{
+					_pair.second->OnChoice((LPNMSELCHANGE)_lp);
 					break;
 				}
 			}

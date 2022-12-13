@@ -131,6 +131,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Window\Control\Button\Booking\ButtonBookingControl.cpp" />
+    <ClCompile Include="Window\Menu\BookingViewDataMenu\BookingViewDataMenu.cpp" />
     <ClCompile Include="Window\Menu\BookingViewMenu\BookingViewMenu.cpp" />
     <ClCompile Include="Booking\Manager\BookingManager.cpp" />
     <ClCompile Include="Booking\Booking.cpp" />
@@ -150,6 +152,8 @@
     <ClCompile Include="Window\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Window\Control\Button\Booking\ButtonBookingControl.h" />
+    <ClInclude Include="Window\Menu\BookingViewDataMenu\BookingViewDataMenu.h" />
     <ClInclude Include="Window\Menu\BookingViewMenu\BookingViewMenu.h" />
     <ClInclude Include="Booking\Manager\BookingManager.h" />
     <ClInclude Include="Booking\Booking.h" />

@@ -30,6 +30,7 @@ public:
 	void OnChoice(LPNMSELCHANGE _value); 
 	DateTime ArrivedDate() const; 
 	DateTime DepartureDate() const;
+	void SetInteract(bool _bool);
 #pragma endregion methods
 #pragma region override
 public:

@@ -66,6 +66,12 @@
     <ClCompile Include="Window\Menu\BookingViewMenu\BookingViewMenu.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="Window\Menu\BookingViewDataMenu\BookingViewDataMenu.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Window\Control\Button\Booking\ButtonBookingControl.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Object\Object.h">
@@ -123,6 +129,12 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Window\Menu\BookingViewMenu\BookingViewMenu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Window\Menu\BookingViewDataMenu\BookingViewDataMenu.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Window\Control\Button\Booking\ButtonBookingControl.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

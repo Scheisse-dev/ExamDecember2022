@@ -20,7 +20,7 @@ void BookingViewDataMenu::Delete()
 
 void BookingViewDataMenu::ReturnToBookingView()
 {
-	owner->SetCurrentMenu(BOOKINGVIEWDATA);
+	owner->SetCurrentMenu(BOOKINGVIEWMENU);
 }
 #pragma endregion methods
 #pragma region override

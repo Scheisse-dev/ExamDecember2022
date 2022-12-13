@@ -30,6 +30,7 @@ std::wstring LabelControl::Text()
 void LabelControl::SetText(const wchar_t* _newtext)
 {
     text = _newtext;
+    SetWindowTextA(instance, TextStr().c_str());
 }
 
 HWND LabelControl::Create()

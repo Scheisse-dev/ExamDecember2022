@@ -1,6 +1,7 @@
 #pragma once
 #include "../../Object/Object.h"
 #include "../Control/Button/ButtonControl.h"
+#include "../Control/TextField/TextFieldControl.h"
 #include "../Control/Label/LabelControl.h"
 #include <vector>
 
@@ -32,9 +33,9 @@ public:
 	virtual void Initialize();
 	std::string Name();
 protected: 
-	void CreateButton(const Rect& _rect, const wchar_t* _text);
-	void CreateLabel(const Rect& _rect, const wchar_t* _text);
-	void CreateTextField(const Rect& _rect, const wchar_t* _defaultText);
+	ButtonControl* CreateButton(const Rect& _rect, const wchar_t* _text);
+	LabelControl* CreateLabel(const Rect& _rect, const wchar_t* _text);
+	TextFieldControl* CreateTextField(const Rect& _rect, const wchar_t* _defaultText);
 	class CalendarControl* CreateCalendar(const Rect& _rect);
 #pragma endregion methods
 

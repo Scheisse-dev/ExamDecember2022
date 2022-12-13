@@ -45,6 +45,18 @@ DateTime DateTime::NowInternal()
     localtime_s(&_tm, &_now); 
     return DateTime(_tm.tm_mday, _tm.tm_mon, _tm.tm_year + 1900, _tm.tm_hour, _tm.tm_min, _tm.tm_sec);
 }
+SYSTEMTIME DateTime::ToSystemTime() const
+{
+    SYSTEMTIME _time = SYSTEMTIME();
+    _time.wDay = day;
+    _time.wMonth = month;
+    _time.wYear = year;
+    _time.wHour = hour;
+    _time.wMinute = minute;
+    _time.wSecond = second;
+
+    return _time; 
+}
 std::string DateTime::ToString() const
 {
     return std::format("{:02}/{:02}/{:02} {:02}:{:02}:{:02}", day, month, year, hour, minute, second); 

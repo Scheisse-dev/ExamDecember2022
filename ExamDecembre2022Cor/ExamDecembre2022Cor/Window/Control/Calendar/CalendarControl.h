@@ -1,12 +1,20 @@
 #pragma once
 #include "../WindowControl.h"
+#include "../../../Utils/DateTime/DateTime.h"
+#include <CommCtrl.h>
+#include <map>
+class DateTime;
 
 class CalendarControl : public WindowControl
 {
 
 	DECLARE_CLASS_INFO(WindowControl)
 #pragma region f/p
-private:
+public:
+	static inline std::map<int, CalendarControl*> calendars = std::map<int, CalendarControl*>();
+private: 
+	DateTime arrivedDate = DateTime(); 
+	DateTime departureDate = DateTime();
 
 #pragma endregion f/p
 #pragma region constructor
@@ -18,6 +26,10 @@ public:
 #pragma region methods
 public: 
 	void SetMaxSelected(UINT _value);
+	void SetValue(const DateTime& _a, const DateTime& _b);
+	void OnChoice(LPNMSELCHANGE _value); 
+	DateTime ArrivedDate() const; 
+	DateTime DepartureDate() const;
 #pragma endregion methods
 #pragma region override
 public:

@@ -1,5 +1,6 @@
 #include "Window.h"
 #include "Menu/BaseMenu.h"
+#include "Control/TextField/TextFieldControl.h"
 #include <format>
 #include <ranges>
 
@@ -65,9 +66,32 @@ LRESULT _stdcall Window::WindowProc(HWND _hwindow, UINT _msg, WPARAM _wp, LPARAM
 	switch (_msg)
 	{
 	case WM_COMMAND :
-		if (!ButtonControl::buttons.contains(_wp)) break; 
-		ButtonControl::buttons[_wp]->OnClick.Invoke();
-		break; 
+	{
+		if (ButtonControl::buttons.contains(_wp))
+		{
+			ButtonControl::buttons[_wp]->OnClick.Invoke();
+			break;
+
+		}
+		WORD _word = HIWORD(_wp); 
+		switch (_word)
+		{
+		case EN_CHANGE:
+		{
+			std::map<int, TextFieldControl*> textfields = TextFieldControl::textfields;
+			for (std::pair<int, TextFieldControl*> _pair : textfields)
+			{
+				if (_pair.first == LOWORD(_wp))
+				{
+					_pair.second->OnValueChange();
+					break;
+				}
+			}
+			break;
+		}
+		}
+		break;
+	}
 	case WM_DESTROY :
 	{
 		isOpen = false;

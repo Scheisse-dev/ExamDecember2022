@@ -7,7 +7,7 @@ class TextFieldControl : public WindowControl
 	DECLARE_CLASS_INFO(WindowControl); 
 #pragma region f/p
 public: 
-	std::map<int,TextFieldControl*> textfields = std::map<int, TextFieldControl*>();
+	static inline std::map<int,TextFieldControl*> textfields = std::map<int, TextFieldControl*>();
 private:
 	const wchar_t* defaultText = TEXT("");
 	std::wstring currentText = TEXT(""); 
@@ -20,7 +20,9 @@ public:
 #pragma region constructor
 #pragma region methods
 public:
-	std::wstring Current() const; 
+	void OnValueChange();
+	std::wstring CurrentText() const; 
+	std::string CurrentTextStr() const;
 	void OnTextChange(const wchar_t* _text);
 	HWND Create() override; 
 #pragma endregion methods

@@ -1,6 +1,5 @@
 #include "BaseMenu.h"
 #include "../Control/WindowControl.h"
-#include "../Control/TextField/TextFieldControl.h"
 #include "../Control/Calendar/CalendarControl.h"
 #include "../Window.h"
 
@@ -46,23 +45,26 @@ std::string BaseMenu::Name()
 {
 	return name;
 }
-void BaseMenu::CreateButton(const Rect& _rect, const wchar_t* _text)
+ButtonControl* BaseMenu::CreateButton(const Rect& _rect, const wchar_t* _text)
 {
 	ButtonControl* _button = new ButtonControl(currentControlID++, owner->WindowInstance(), _rect, _text);
 	_button->Create();
 	controls.push_back(_button);
+	return _button;
 }
-void BaseMenu::CreateLabel(const Rect& _rect, const wchar_t* _text)
+LabelControl* BaseMenu::CreateLabel(const Rect& _rect, const wchar_t* _text)
 {
 	LabelControl* _label = new LabelControl(currentControlID++, owner->WindowInstance(), _rect, _text);
 	_label->Create();
 	controls.push_back(_label); 
+	return _label;
 }
-void BaseMenu::CreateTextField(const Rect& _rect, const wchar_t* _defaultText)
+TextFieldControl* BaseMenu::CreateTextField(const Rect& _rect, const wchar_t* _defaultText)
 {
 	TextFieldControl* _textField = new TextFieldControl(currentControlID++, owner -> WindowInstance(), _rect, _defaultText); 
 	_textField->Create();
 	controls.push_back(_textField);
+	return _textField;
 }
 CalendarControl* BaseMenu::CreateCalendar(const Rect& _rect)
 {

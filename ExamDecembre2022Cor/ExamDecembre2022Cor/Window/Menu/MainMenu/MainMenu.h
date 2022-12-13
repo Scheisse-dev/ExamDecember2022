@@ -11,6 +11,11 @@ public:
 	MainMenu(Window* _owner);
 	MainMenu(const MainMenu& _copy) = default; 
 #pragma endregion constructor
+#pragma region methods
+public:
+	void OpenBookingMenu();
+	void OpenBookingView(); 
+#pragma endregion methods 
 #pragma region override
 public:
 	void Initialize() override; 

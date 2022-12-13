@@ -131,6 +131,8 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Window\Menu\BookingViewMenu\BookingViewMenu.cpp" />
+    <ClCompile Include="Booking\Manager\BookingManager.cpp" />
     <ClCompile Include="Booking\Booking.cpp" />
     <ClCompile Include="Booking\Client\Client.cpp" />
     <ClCompile Include="Utils\DateTime\DateTime.cpp" />
@@ -148,8 +150,11 @@
     <ClCompile Include="Window\Window.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Window\Menu\BookingViewMenu\BookingViewMenu.h" />
+    <ClInclude Include="Booking\Manager\BookingManager.h" />
     <ClInclude Include="Booking\Booking.h" />
     <ClInclude Include="Booking\Client\Client.h" />
+    <ClInclude Include="Utils\Singleton\Singleton.h" />
     <ClInclude Include="Utils\DateTime\DateTime.h" />
     <ClInclude Include="Window\Control\Calendar\CalendarControl.h" />
     <ClInclude Include="Window\Menu\BookingMenu\BookingMenu.h" />

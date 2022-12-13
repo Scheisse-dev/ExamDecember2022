@@ -25,8 +25,10 @@ public:
 	DateTime(const DateTime& _copy); 
 #pragma endregion constructor
 #pragma region methods
-public:
+private:
 	static DateTime NowInternal();
+public:
+	SYSTEMTIME ToSystemTime() const;
 #pragma endregion methods
 #pragma region override 
 public: 

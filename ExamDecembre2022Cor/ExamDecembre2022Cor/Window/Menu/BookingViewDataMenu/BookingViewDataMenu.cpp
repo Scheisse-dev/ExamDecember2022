@@ -36,7 +36,7 @@ void BookingViewDataMenu::Initialize()
 	calendar = CreateCalendar(Rect(10, 160, 250, 20));
 	calendar->SetMaxSelected(15);
 
-	ButtonControl* _deleteControl = CreateButton(Rect(10, 0, 100, 20), TEXT("Delete"));
+	ButtonControl* _deleteControl = CreateButton(Rect(10, 500, 100, 20), TEXT("Delete"));
 	_deleteControl->OnClick.SetDynamic(this, &BookingViewDataMenu::Delete);
 
 	isInitialized = true; 
